@@ -35,7 +35,7 @@
     const SUPABASE_URL = "https://iagkcmdhovinvuneebux.supabase.co";
     const SUPABASE_KEY = "sb_publishable_qaKK9JkrFWgJj4sDlK3bCQ_OzIb5dnw"; 
     // Initialize the web client connection
-    const supabase = _supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
     const form = document.getElementById('alertForm');
     const msgDiv = document.getElementById('message');
     // 2. LISTEN FOR THE SUBMIT CLICK
