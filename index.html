@@ -113,8 +113,7 @@
     const SUPABASE_KEY = "sb_publishable_qaKK9JkrFWgJj4sDlK3bCQ_OzIb5dnw";
     // ----------------------------------------------------
     // Initialize Supabase Client (Notice the fix here)
-    let supabase = window.supabase;
-    supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    const supabaseCliednt = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
     document.getElementById('alertForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         const messageDiv = document.getElementById('message');
