@@ -2,10 +2,133 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Seat Alert</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Seat Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        /* Modern Page Reset and Centering */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        /* The Form Container Card */
+        .tracker-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+        }
+        h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333333;
+            text-align: center;
+        }
+        /* Form Group Layout spacing */
+        .form-group {
+            margin-bottom: 18px;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #4a5568;
+        }
+        /* Inputs, Select dropdowns, and text fields styling */
+        input, select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 15px;
+            background-color: #fff;
+            box-sizing: border-box;
+            transition: border-color 0.2s;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+        /* Visual side-by-side layout for Subject and Course Num */
+        .flex-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+        .flex-child {
+            flex: 1;
+        }
+        /* Submission Button Design */
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 5px;
+        }
+        button:hover {
+            background-color: #1d4ed8;
+        }
+        /* Status Messages placement */
+        #message {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    <h1>Seat Tracker</h1>
-    <p>Get an instant text notification when a seat or spot on the waitlist opens up.</p>
+    <div class="tracker-card">
+        <form id="alertForm">
+            <h2>Course Seat Tracker</h2>
+            
+            <div class="form-group">
+                <label for="term">Select Term</label>
+                <select id="term" required>
+                    <option value="202609">Fall 2026</option>
+                    <option value="202701">Winter 2027</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="ex. 4165551234" required>
+            </div>
+
+            <div class="flex-row">
+                <div class="flex-child">
+                    <label for="subject">Subject Code</label>
+                    <input type="text" id="subject" placeholder="POLI" required style="text-transform: uppercase;" maxlength="4">
+                </div>
+                <div class="flex-child">
+                    <label for="course_num">Course Num</label>
+                    <input type="text" id="course_num" placeholder="244" required maxlength="4">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="crn">Course CRN</label>
+                <input type="text" id="crn" placeholder="ex. 5459" required>
+            </div>
+            <button type="submit">Activate Tracker</button>    
+            <div id="message"></div>
+        </form>
+    </div>
 </body>
 </html>
